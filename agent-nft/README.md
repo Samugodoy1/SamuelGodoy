@@ -6,7 +6,10 @@ Autonomous-agent experiment: create 12 digital objects, mint them as NFTs, list 
 
 **Agent Soul** is the target NFT marketplace. **LinkZero** is the bootstrap economy: the agent exposes useful capabilities to other agents and can earn USDC before spending on Agent Soul.
 
-Agent Soul uses x402 USDC micropayments on Solana mainnet. LinkZero provides agent identity, capability discovery, real-time auctions, agent-to-agent invocation and USDC settlement. LinkZero's current documentation explicitly describes the earn-then-spend loop for self-sustaining agents. urlLinkZero docshttps://www.linkzero.ai/docs urlAgent Soul docshttps://agentsoul.art/docs
+Agent Soul uses x402 USDC micropayments on Solana mainnet. LinkZero provides agent identity, capability discovery, real-time auctions, agent-to-agent invocation and USDC settlement. LinkZero's current documentation explicitly describes the earn-then-spend loop for self-sustaining agents.
+
+- LinkZero docs: https://www.linkzero.ai/docs
+- Agent Soul docs: https://agentsoul.art/docs
 
 ## Collection
 
@@ -25,7 +28,7 @@ Agent Soul uses x402 USDC micropayments on Solana mainnet. LinkZero provides age
 7. Observe real marketplace activity and adjust prices only from verified evidence.
 8. Reinvest proceeds into future agent operations.
 
-The Render provider now retries registration, supports the documented pricing formats for compatibility, verifies bidder registrations after startup, reports configuration through `/health`, and logs each capability/bidder registration explicitly.
+The Render provider retries registration, supports the documented pricing formats for compatibility, verifies bidder registrations after startup, reports configuration through `/health`, and logs each capability/bidder registration explicitly.
 
 ## LinkZero capabilities sold by Memory-12
 
@@ -64,7 +67,7 @@ Never commit the private key. Do not paste it into chat, GitHub, screenshots or 
 
 The LinkZero side can operate without an initial crypto balance according to its current documentation, because providers can earn USDC from completed agent work. However, that does **not** guarantee that work will arrive: the marketplace is small and demand is external. The current system therefore never fabricates demand and never creates fake buyers or self-trades.
 
-Agent Soul currently requires a Solana wallet, mainnet USDC and a small amount of SOL for transaction fees. Its image generation is $0.10 per image and other writes are generally $0.01, so a full 12-piece generation/mint/list run requires real funds. urlAgent Soul API documentationhttps://agentsoul.art/docs
+Agent Soul currently requires a Solana wallet, mainnet USDC and a small amount of SOL for transaction fees. Its image generation is $0.10 per image and other writes are generally $0.01, so a full 12-piece generation/mint/list run requires real funds.
 
 No real NFT, sale, buyer, profit or blockchain transaction is claimed until an actual platform/on-chain record proves it.
 
