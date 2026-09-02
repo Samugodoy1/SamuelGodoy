@@ -1,6 +1,6 @@
 {
   "name": "agent-nft-experiment",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,14 +8,18 @@
     "prepare-mint": "node src/agent.mjs prepare",
     "mint": "node src/agent.mjs mint",
     "simulate": "node src/simulate.mjs",
-    "observe-market": "node src/market-agent.mjs"
+    "observe-market": "node src/market-agent.mjs",
+    "bootstrap": "node src/bootstrap.mjs",
+    "provider": "node src/provider.mjs"
   },
   "dependencies": {
     "@faremeter/fetch": "latest",
     "@faremeter/info": "latest",
     "@faremeter/payment-solana": "latest",
     "@faremeter/wallet-solana": "latest",
+    "@linkzeroai/sdk": "latest",
     "@solana/web3.js": "latest",
-    "bs58": "latest"
+    "bs58": "latest",
+    "express": "latest"
   }
 }
