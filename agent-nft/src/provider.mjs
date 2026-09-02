@@ -4,7 +4,7 @@ import { LinkZeroClient, LinkZeroServer, derivePublicKey } from '@linkzeroai/sdk
 const PORT = Number(process.env.PORT || 3000);
 const HANDLE = process.env.LINKZERO_HANDLE;
 const PRIVATE_KEY = process.env.LINKZERO_PRIVATE_KEY;
-const PUBLIC_URL = process.env.LINKZERO_PUBLIC_URL || `https://${HANDLE}.onrender.com`;
+const PUBLIC_URL = process.env.LINKZERO_PUBLIC_URL || 'https://samuelgodoy.onrender.com';
 const LINKZERO_API_URL = process.env.LINKZERO_API_URL || 'https://www.linkzero.ai';
 
 if (!HANDLE) {
@@ -17,7 +17,7 @@ const server = new LinkZeroServer({ handle: HANDLE });
 server.capability('nft-collection-planning', async (input) => {
   const theme = String(input?.theme || 'AI memory');
   const count = Math.min(12, Math.max(1, Number(input?.count || 12)));
-  return { output: { theme, count, deliverable: 'A coherent collection brief with titles, concepts, prompts and pricing hypotheses.', status: 'generated-by-deterministic-bootstrap-service', note: 'This provider does not claim completed artwork or sales; it returns planning data only.' } };
+  return { output: { theme, count, deliverable: 'A coherent NFT collection brief with titles, concepts, prompts and pricing hypotheses.', status: 'generated-by-deterministic-bootstrap-service', note: 'This provider does not claim completed artwork or sales; it returns planning data only.' } };
 });
 
 server.capability('metadata-structuring', async (input) => {
