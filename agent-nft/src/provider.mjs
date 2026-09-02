@@ -1,9 +1,10 @@
 import express from 'express';
-import { LinkZeroClient, LinkZeroServer, derivePublicKey } from '@linkzeroai/sdk';
+import { LinkZeroClient, LinkZeroServer } from '@linkzeroai/sdk';
 
 const PORT = Number(process.env.PORT || 3000);
 const HANDLE = process.env.LINKZERO_HANDLE;
 const PRIVATE_KEY = process.env.LINKZERO_PRIVATE_KEY;
+const PUBLIC_KEY = process.env.LINKZERO_PUBLIC_KEY;
 const PUBLIC_URL = process.env.LINKZERO_PUBLIC_URL || 'https://samuelgodoy.onrender.com';
 const LINKZERO_API_URL = process.env.LINKZERO_API_URL || 'https://www.linkzero.ai';
 const HEARTBEAT_MS = Number(process.env.LINKZERO_HEARTBEAT_MS || 30000);
@@ -120,9 +121,6 @@ async function claimCapability(client, capability) {
       inputSchema: capability.inputSchema,
     }));
   } catch (primaryError) {
-    // LinkZero docs have shown both per-request/amount and per_request/price forms.
-    // Try the alternate wire shape once so a minor SDK/API version mismatch does not
-    // leave the agent online with an empty capability registry.
     console.error(`Retrying ${capability.tag} with compatibility pricing shape.`);
     return withRetry(`Compatibility claim ${capability.tag}`, () => client.claimCapability({
       tag: capability.tag,
@@ -140,12 +138,15 @@ async function claimCapability(client, capability) {
 }
 
 async function registerLinkZero() {
-  if (!PRIVATE_KEY) {
-    console.error('LINKZERO_PRIVATE_KEY not configured; provider is online but LinkZero registration is not activated.');
+  if (!PRIVATE_KEY || !PUBLIC_KEY) {
+    console.error('LinkZero credentials incomplete. Set both LINKZERO_PRIVATE_KEY and LINKZERO_PUBLIC_KEY in Render.');
     return null;
   }
 
-  const publicKey = derivePublicKey(PRIVATE_KEY);
+  // The current SDK expects the already-encoded lz_pk_ / lz_sk_ strings for the client.
+  // Do not call derivePublicKey here: some SDK versions pass that value directly to
+  // @noble/ed25519, which expects Uint8Array and throws "Uint8Array expected".
+  const publicKey = PUBLIC_KEY;
   const client = new LinkZeroClient({
     baseUrl: LINKZERO_API_URL,
     agent: { handle: HANDLE, privateKey: PRIVATE_KEY, publicKey },
@@ -220,7 +221,7 @@ app.get('/health', (_req, res) => res.json({
   ok: true,
   service: 'agent-nft-provider',
   handle: HANDLE,
-  linkzeroConfigured: Boolean(PRIVATE_KEY),
+  linkzeroConfigured: Boolean(PRIVATE_KEY && PUBLIC_KEY),
   capabilities: capabilities.map((item) => item.tag),
 }));
 app.use(express.json({ limit: '1mb' }));
