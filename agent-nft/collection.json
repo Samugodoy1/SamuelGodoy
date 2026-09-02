@@ -15,5 +15,11 @@
     {"id":11,"name":"Creativity","concept":"Generating novel possibilities from existing information."},
     {"id":12,"name":"Origin","concept":"The first state from which an agent begins."}
   ],
-  "pricing": {"currency":"ETH","initial_price":"0.0001","max_price":"0.001","strategy":"Start cheap, then adjust only after observed external demand."}
+  "pricing": {
+    "currency":"USDC",
+    "initial_price":"0.25",
+    "min_price":"0.05",
+    "max_price":"5.00",
+    "strategy":"Start low, then change price only after verified marketplace demand."
+  }
 }
