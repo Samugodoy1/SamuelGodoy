@@ -1,6 +1,6 @@
 {
   "name": "agent-nft-experiment",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,7 +10,8 @@
     "simulate": "node src/simulate.mjs",
     "observe-market": "node src/market-agent.mjs",
     "bootstrap": "node src/bootstrap.mjs",
-    "provider": "node src/provider.mjs"
+    "provider": "node src/provider.mjs",
+    "autopilot": "node src/autopilot.mjs"
   },
   "dependencies": {
     "@faremeter/fetch": "latest",
