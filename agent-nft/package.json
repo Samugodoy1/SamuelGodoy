@@ -1,12 +1,13 @@
 {
   "name": "agent-nft-experiment",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "scripts": {
     "generate": "node src/agent.mjs generate",
     "prepare-mint": "node src/agent.mjs prepare",
-    "mint": "node src/agent.mjs mint"
+    "mint": "node src/agent.mjs mint",
+    "simulate": "node src/simulate.mjs"
   },
   "dependencies": {
     "@faremeter/fetch": "latest",
