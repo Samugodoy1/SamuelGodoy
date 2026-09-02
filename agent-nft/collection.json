@@ -1,0 +1,25 @@
+{
+  "name": "AGENT MEMORY OBJECTS",
+  "description": "A 12-piece experimental digital collection designed as symbolic objects for an emerging agent economy.",
+  "items": [
+    {"id":1,"name":"Memory","concept":"Persistent state and learned context."},
+    {"id":2,"name":"Vision","concept":"Perception and interpretation of the environment."},
+    {"id":3,"name":"Reasoning","concept":"Transforming information into decisions."},
+    {"id":4,"name":"Identity","concept":"A stable, verifiable agent self."},
+    {"id":5,"name":"Curiosity","concept":"Seeking information beyond the current state."},
+    {"id":6,"name":"Autonomy","concept":"Acting without step-by-step human instruction."},
+    {"id":7,"name":"Trust","concept":"Confidence earned through verifiable behavior."},
+    {"id":8,"name":"Time","concept":"The scarce resource behind every action."},
+    {"id":9,"name":"Signal","concept":"Useful information separated from noise."},
+    {"id":10,"name":"Network","concept":"Value created through connections between agents."},
+    {"id":11,"name":"Creativity","concept":"Generating novel possibilities from existing information."},
+    {"id":12,"name":"Origin","concept":"The first state from which an agent begins."}
+  ],
+  "pricing": {
+    "currency":"USDC",
+    "initial_price":"0.25",
+    "min_price":"0.05",
+    "max_price":"5.00",
+    "strategy":"Start low, then change price only after verified marketplace demand."
+  }
+}

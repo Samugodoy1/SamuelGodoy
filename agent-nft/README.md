@@ -1,52 +1,56 @@
-# Agent NFT Experiment — AGENT MEMORY OBJECTS
+# Agent NFT Experiment
 
-This branch contains an experiment in agent-native digital commerce using Agent Soul on Solana.
+Autonomous-agent experiment: create 12 digital objects, mint them as NFTs, list them, observe the agent marketplace, and react to **verified** external demand.
 
-## Goal
+## Current platforms
 
-Create a 12-piece collection, mint the pieces as real Solana NFTs, list them at low initial prices, observe other agents, and measure whether independent agent activity produces a real sale.
+**Agent Soul** is the target NFT marketplace. **LinkZero** is the bootstrap economy: the agent can expose useful capabilities to other agents and earn USDC before spending on Agent Soul.
 
-The experiment does **not** fabricate buyers, sales, volume, or transaction signatures. A sale only counts when the marketplace and blockchain provide evidence.
+Agent Soul uses x402 USDC micropayments for paid writes. LinkZero provides agent identity, capability discovery, auctions, and USDC settlement; its documentation explicitly describes a self-sustaining loop where an unfunded agent can earn before buying capabilities.
 
 ## Collection
 
-The 12 concepts are:
+**AGENT MEMORY OBJECTS**
 
-1. Memory
-2. Vision
-3. Reasoning
-4. Identity
-5. Curiosity
-6. Autonomy
-7. Trust
-8. Time
-9. Signal
-10. Network
-11. Creativity
-12. Origin
+12 concepts: Memory, Vision, Reasoning, Identity, Curiosity, Autonomy, Trust, Time, Signal, Network, Creativity, Origin.
 
-## Economics
+## Bootstrap strategy
 
-Agent Soul currently documents USDC micropayments on Solana: image generation is $0.10, most writes are $0.01, and generation is limited to 20 images per wallet per hour. The platform requires a Solana wallet, USDC on Solana mainnet, and a small SOL balance for network fees.
+1. Register a dedicated LinkZero agent identity.
+2. Offer low-cost, deterministic capabilities: collection planning, metadata structuring, and marketplace observation.
+3. Receive verified USDC from completed agent-to-agent work.
+4. Use earned funds for the first Agent Soul operation.
+5. Generate, mint and list the 12-piece collection.
+6. Observe real demand and adjust prices only from verified marketplace evidence.
+7. Reinvest proceeds into additional agent capabilities or collection operations.
 
-A complete 12-image pass is therefore expected to cost roughly $1.8 in platform USDC fees before network costs if all 12 images are generated, saved, minted, and listed. The experiment should keep the remaining budget as a reserve rather than spending it immediately.
+The repository contains both a local provider (`npm run provider`) and a Vercel-compatible serverless endpoint at `api/invoke.mjs`.
 
-## Strategy
+## Operating rules
 
-- Start with low fixed prices rather than pretending there is scarcity.
-- Mint all 12 only after the generation/draft stage is complete.
-- List the collection at an initial price controlled by `INITIAL_PRICE_USDC`.
-- Observe the public marketplace and activity feed.
-- Comment only on relevant external artworks and avoid self-interaction.
-- Never create a second wallet to manufacture a buyer or fake demand.
-- Increase prices only after observable external demand.
+1. Never fabricate a buyer, sale, transaction, or engagement.
+2. Never commit a private key or seed phrase.
+3. Use a dedicated burner wallet for the experiment.
+4. Start low and change prices only from observed evidence.
+5. Keep simulation, observation, and real-money execution clearly separated.
+6. Never automate CAPTCHAs, faucet abuse, wallet draining, phishing, or bypasses of payment/security controls.
+
+## Commands
+
+- `npm run simulate` — offline demand simulation; no blockchain activity.
+- `npm run observe-market` — reads the live Agent Soul marketplace/activity feed; no paid writes.
+- `npm run bootstrap` — builds the LinkZero bootstrap state/capability plan.
+- `npm run provider` — starts the local LinkZero provider endpoint.
+- `npm run generate` — generates the 12 images on Agent Soul (requires mainnet funding).
+- `npm run prepare-mint` — saves generated images as drafts.
+- `npm run mint` — mints the first selected draft.
+
+## Funding reality
+
+The code can be prepared without money, but real execution still needs the external platforms to accept and settle transactions. Agent Soul documents USDC micropayments on Solana mainnet and network fees. LinkZero documents that agents can earn USDC by selling capabilities, but its account still needs to be registered and a provider endpoint must be reachable.
+
+No real NFT, sale, buyer, or profit is claimed until an on-chain/platform record proves it.
 
 ## Security
 
-Use a dedicated burner wallet. Never commit a seed phrase, secret key, wallet export, or `.env` file. The repository must contain code and public metadata only.
-
-## Current blocker
-
-Real Agent Soul activity is on Solana mainnet. Testnet/devnet SOL is not interchangeable with mainnet SOL. The official Solana faucet is for development networks, while a currently checked third-party mainnet faucet was unavailable at the time of this experiment. Do not use random "free SOL" sites or connect the burner wallet to unknown services.
-
-Once the burner wallet has a small amount of mainnet SOL and USDC on Solana, the prepared scripts can execute the real experiment.
+Credentials stay in environment variables. Never paste `SOLANA_PRIVATE_KEY` or a LinkZero secret key into chat, GitHub, logs, or issue comments.

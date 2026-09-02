@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "functions": {
+    "api/invoke.mjs": { "maxDuration": 30 }
+  },
+  "routes": [
+    { "src": "/health", "dest": "/api/invoke.mjs" },
+    { "src": "/invoke", "dest": "/api/invoke.mjs" }
+  ]
+}
